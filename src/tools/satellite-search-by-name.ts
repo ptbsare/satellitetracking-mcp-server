@@ -1,6 +1,6 @@
 import { ErrorCode, McpError } from '@modelcontextprotocol/sdk/types.js';
 import { N2YOApiClient, SatelliteAbove } from '../api-client.js'; // Assuming SatelliteAbove is the correct type for individual satellite data
-import { CATEGORY_MAPPING, formatSatelliteData } from './tool-utils'; // We'll need to extract common functions
+import { CATEGORY_MAPPING, formatSatelliteData } from './tool-utils.js'; // We'll need to extract common functions
 
 export const searchSatellitesByNameToolSchema = {
   name: 'search_satellites_by_name',
