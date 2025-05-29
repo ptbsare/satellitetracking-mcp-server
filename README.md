@@ -13,7 +13,8 @@ This MCP server provides the following capabilities:
 - **predict_visual_passes**: Predict visible passes of a satellite over a location
 - **predict_radio_passes**: Predict radio frequency passes of a satellite over a location
 - **get_satellites_above**: Get satellites currently above a specified location
-- **search_satellites**: Search for satellites by name or category
+- **search_satellites_by_name**: Search for satellites by name
+- **search_satellites_by_category**: Search for satellites by category ID
 
 ### Resources
 
@@ -143,15 +144,29 @@ Once the server is configured and running, you can use it with Claude to access 
 </use_mcp_tool>
 ```
 
-### Search for Satellites
+### Search for Satellites by Name
 
 ```
 <use_mcp_tool>
 <server_name>satellite-tracking</server_name>
-<tool_name>search_satellites</tool_name>
+<tool_name>search_satellites_by_name</tool_name>
 <arguments>
 {
   "query": "ISS"
+}
+</arguments>
+</use_mcp_tool>
+```
+
+### Search for Satellites by Category
+
+```
+<use_mcp_tool>
+<server_name>satellite-tracking</server_name>
+<tool_name>search_satellites_by_category</tool_name>
+<arguments>
+{
+  "category_id": 29
 }
 </arguments>
 </use_mcp_tool>
