@@ -17,7 +17,8 @@ import { getSatelliteTLETool, getSatelliteTLEToolSchema } from './tools/satellit
 import { predictVisualPassesTool, predictVisualPassesToolSchema } from './tools/visual-passes.js';
 import { predictRadioPassesTool, predictRadioPassesToolSchema } from './tools/radio-passes.js';
 import { getSatellitesAboveTool, getSatellitesAboveToolSchema } from './tools/satellites-above.js';
-import { searchSatellitesTool, searchSatellitesToolSchema } from './tools/satellite-search.js';
+import { searchSatellitesByNameTool, searchSatellitesByNameToolSchema } from './tools/satellite-search-by-name.js';
+import { searchSatellitesByCategoryTool, searchSatellitesByCategoryToolSchema } from './tools/satellite-search-by-category.js';
 import { getSatelliteResource, satelliteResourceTemplate } from './resources/satellite.js';
 import { getSatellitesCategoryResource, satellitesCategoryResourceTemplate } from './resources/category.js';
 import { getSatellitesAboveResource, satellitesAboveResourceTemplate } from './resources/above.js';
@@ -73,7 +74,8 @@ class SatelliteTrackingServer {
         predictVisualPassesToolSchema,
         predictRadioPassesToolSchema,
         getSatellitesAboveToolSchema,
-        searchSatellitesToolSchema,
+        searchSatellitesByNameToolSchema,
+        searchSatellitesByCategoryToolSchema,
       ],
     }));
 
@@ -97,8 +99,11 @@ class SatelliteTrackingServer {
         case 'get_satellites_above':
           return getSatellitesAboveTool(apiClient, request.params.arguments as any);
 
-        case 'search_satellites':
-          return searchSatellitesTool(apiClient, request.params.arguments as any);
+        case 'search_satellites_by_name':
+          return searchSatellitesByNameTool(apiClient, request.params.arguments as any);
+
+        case 'search_satellites_by_category':
+          return searchSatellitesByCategoryTool(apiClient, request.params.arguments as any);
 
         default:
           throw new McpError(
