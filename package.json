@@ -4,11 +4,16 @@
   "description": "MCP server for N2YO satellite tracking",
   "main": "build/index.js",
   "type": "module",
+  "bin": {
+    "satellite-tracking-server": "build/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "postbuild": "chmod +x build/index.js",
     "start": "node build/index.js",
-    "dev": "ts-node --esm src/index.ts"
+    "dev": "ts-node --esm src/index.ts",
+    "prepack": "npm run build",
+    "prepare": "npm run build"
   },
   "keywords": [
     "mcp",
