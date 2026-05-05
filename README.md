@@ -24,12 +24,20 @@ This MCP server provides the following capabilities:
 
 ## Installation
 
+### Quick Start with npx (Recommended)
+
+The fastest way to use this server is directly from GitHub with npx — no clone or install needed:
+
+```bash
+npx "git+https://github.com/ptbsare/satellitetracking-mcp-server.git"
+```
+
 ### Prerequisites
 
 - Node.js 18 or higher
 - A N2YO API key (available from [N2YO API Services](https://www.n2yo.com/api/))
 
-### Setup
+### Setup from source
 
 1. Clone this repository or download the source code
 2. Install dependencies:
@@ -53,7 +61,53 @@ The server requires a N2YO API key to function. You can provide this through the
 
 To use this server with Claude, add it to your MCP settings configuration file:
 
-#### For Claude Desktop App (macOS)
+#### Using npx (Recommended — no install needed)
+
+##### For Claude Desktop App (macOS)
+
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "satellite-tracking": {
+      "command": "npx",
+      "args": ["-y", "git+https://github.com/ptbsare/satellitetracking-mcp-server.git"],
+      "env": {
+        "N2YO_API_KEY": "your-api-key-here"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+##### For Claude VSCode Extension
+
+Edit `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "satellite-tracking": {
+      "command": "npx",
+      "args": ["-y", "git+https://github.com/ptbsare/satellitetracking-mcp-server.git"],
+      "env": {
+        "N2YO_API_KEY": "your-api-key-here"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+#### Using a local build
+
+If you prefer to run from a local clone instead of npx:
+
+##### For Claude Desktop App (macOS)
 
 Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
@@ -73,7 +127,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
 }
 ```
 
-#### For Claude VSCode Extension
+##### For Claude VSCode Extension (local build)
 
 Edit `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`:
 
